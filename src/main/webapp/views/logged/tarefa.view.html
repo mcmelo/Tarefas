@@ -1,0 +1,147 @@
+<h3>Tarefa</h3>
+
+<div class=""></div> 
+<div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-datasource" id="crn-datasource-763276"> 
+   <datasource  name="Tarefa" entity="api/rest/tarefas/Tarefa" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource> 
+</div> 
+<div class=""></div> 
+<div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-button" id="crn-button-564202"> 
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="Tarefa.startInserting()" ng-hide="Tarefa.inserting || Tarefa.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button> 
+</div> 
+<div class=""></div> 
+<div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-grid" id="crn-grid-Tarefa"> 
+  <div crn-datasource="Tarefa" class="" ng-hide="Tarefa.editing || Tarefa.inserting"> 
+    <table class="table  table-bordered table-hover table-striped"> 
+      <thead> 
+        <tr class="table-header"> 
+          <th class=""> 
+            <div class="">Descrição da Tarefa</div>
+          </th> 
+          <th class=""> 
+            <div class="">Data Prevista</div>
+          </th> 
+          <th class=""> 
+            <div class="">Data de Realização</div>
+          </th> 
+          <th class=""> 
+            <div class="">responsavel</div>
+          </th> 
+          <th class=""> 
+          <div class="">{{"template.crud.actions" | translate}}</div>
+          </th> 
+        </tr> 
+      </thead> 
+      <tbody> 
+        <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+          <td class=""> 
+            <div class="">
+
+                  {{rowData.descricao}}
+        
+            </div>
+          </td> 
+          <td class=""> 
+            <div class="">
+
+                  {{rowData.dataprev | date:'dd/MM/yyyy'}}
+        
+            </div>
+          </td> 
+          <td class=""> 
+            <div class="">
+
+                  {{rowData.datarealiz | date:'dd/MM/yyyy'}}
+        
+            </div>
+          </td> 
+          <td class=""> 
+            <div class="">
+
+                {{rowData.responsavel.nome}}
+        
+            </div>
+          </td> 
+          <td class=""> 
+            <div class=""> 
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button> 
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button> 
+            </div></td> 
+        </tr> 
+      </tbody> 
+    </table> 
+    <div class="table-footer-controls"> 
+      <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button> 
+    </div> 
+  </div> 
+</div> 
+<div class=""></div> 
+<div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-form" id="crn-form-form-Tarefa"> 
+  <div class="form" ng-show="Tarefa.editing || Tarefa.inserting"> 
+    <form crn-datasource="Tarefa" class=""> 
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting"> 
+        <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button> 
+        <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button> 
+        <button class="btn btn-primary" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button> 
+        <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button> 
+        <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button> 
+      </div> 
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting"> 
+        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button> 
+        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button> 
+      </div> 
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting"> 
+        <div class=""></div> 
+        <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-textinput" id="crn-textinput-descricao"> 
+          <div class="form-group"> 
+            <label for="textinput-descricao" class="">Descrição da Tarefa</label> 
+
+        <input type="text" ng-model="Tarefa.active.descricao" class="form-control" id="textinput-descricao" placeholder="Descrição da Tarefa"  required="required"> 
+
+          </div> 
+        </div> 
+        <div class=""></div> 
+        <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-textinput" id="crn-textinput-dataprev"> 
+          <div class="form-group"> 
+            <label for="textinput-dataprev" class="">Data Prevista</label> 
+
+        <div style="position:relative">
+          <input type="text" as-date 
+            format="DD/MM/YYYY"
+          ng-model="Tarefa.active.dataprev" class="form-control" id="textinput-dataprev" placeholder="Data Prevista" >
+        </div>
+
+          </div> 
+        </div> 
+        <div class=""></div> 
+        <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-textinput" id="crn-textinput-datarealiz"> 
+          <div class="form-group"> 
+            <label for="textinput-datarealiz" class="">Data de Realização</label> 
+
+        <div style="position:relative">
+          <input type="text" as-date 
+            format="DD/MM/YYYY"
+          ng-model="Tarefa.active.datarealiz" class="form-control" id="textinput-datarealiz" placeholder="Data de Realização" >
+        </div>
+
+          </div> 
+        </div> 
+        <div class=""></div> 
+        <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-textinput" id="crn-textinput-responsavel"> 
+          <div class="form-group"> 
+            <label for="textinput-responsavel" class="">responsavel</label> 
+
+
+	<datasource name="responsavel" entity="api/rest/tarefas/Responsavel" keys="id" class="" dependent-by="{{Tarefa}}"></datasource> 
+	<select ng-model="Tarefa.active.responsavel" class="form-control" id="textinput-responsavel" ng-options="opt as opt.nome for opt in responsavel.data track by opt.id" >
+	  <option value=''>None</option>
+	</select>
+
+
+          </div> 
+        </div> 
+        <div class=""></div> 
+      </fieldset> 
+    </form> 
+  </div> 
+</div> 
+<div class=""></div>
